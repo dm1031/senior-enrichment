@@ -88,7 +88,7 @@ export const destroyStudent = id => {
   return dispatch => {
     return axios
       .delete(`/api/student/${id}`)
-      .then(() => dispatch(fetchCampuses()));
+      .then(() => dispatch(fetchStudents()));
   };
 };
 
