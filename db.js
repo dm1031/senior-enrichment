@@ -11,9 +11,7 @@ const Campus = conn.define("campuses", {
     }
   },
   imageUrl: {
-    type: Sequelize.TEXT,
-    defaultValue:
-      "https://www.google.com/url?sa=i&source=images&cd=&ved=2ahUKEwiXyrLOl83hAhWRY98KHSmWDJAQjRx6BAgBEAU&url=https%3A%2F%2Fsimpsonswiki.com%2Fwiki%2FSpringfield_Elementary_School&psig=AOvVaw3w2BTFOORRVgjQSGITxXDA&ust=1555248851476251"
+    type: Sequelize.TEXT
   },
   address: {
     type: Sequelize.STRING,
@@ -51,9 +49,7 @@ const Student = conn.define("students", {
     }
   },
   imageUrl: {
-    type: Sequelize.TEXT,
-    defaultValue:
-      "https://www.google.com/imgres?imgurl=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fen%2Fa%2Faa%2FBart_Simpson_200px.png&imgrefurl=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FBart_Simpson&docid=vFAi7OjJ2lytKM&tbnid=NOBTlKyLlEJevM%3A&vet=10ahUKEwj-1MuWmM3hAhVFhOAKHbP9DaIQMwhlKAAwAA..i&w=200&h=298&bih=732&biw=1393&q=bart%20simpson&ved=0ahUKEwj-1MuWmM3hAhVFhOAKHbP9DaIQMwhlKAAwAA&iact=mrc&uact=8"
+    type: Sequelize.TEXT
   },
   gpa: {
     type: Sequelize.DECIMAL,

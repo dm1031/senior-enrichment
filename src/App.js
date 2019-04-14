@@ -6,6 +6,7 @@ import Campuses from "./Campuses";
 import Campus from "./Campus";
 import Students from "./Students";
 import Student from "./Student";
+import Create from "./Create";
 import Nav from "./Nav";
 
 class App extends Component {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route component={Students} path="/students" />
           <Route component={Campus} path="/campus/:id" />
           <Route component={Student} exact path="/student/:id" />
+          <Route component={Create} path="/create" />
         </div>
       </Router>
     );

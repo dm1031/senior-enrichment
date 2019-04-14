@@ -2,7 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
-const Student = ({ currentStudent, campusOfStudent }) => {
+const Student = ({ currentStudent, campuses }) => {
+  let campusOfStudent = [];
+  if (currentStudent.length) {
+    campusOfStudent = campuses.filter(
+      campus => campus.id === currentStudent[0].campusId
+    );
+  }
   return (
     <ul>
       {currentStudent.map(student => (
@@ -36,12 +42,9 @@ const mapStateToProps = (state, { location }) => {
   const currentStudent = state.students.filter(
     student => student.id === location.pathname.slice(-1) * 1
   );
-  const campusOfStudent = state.campuses.filter(
-    campus => campus.id === location.pathname.slice(-1) * 1
-  );
   return {
     currentStudent,
-    campusOfStudent
+    campuses: state.campuses
   };
 };
 

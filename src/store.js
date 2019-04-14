@@ -60,4 +60,19 @@ export const fetchStudents = () => {
   };
 };
 
+export const addCampus = campus => {
+  return dispatch => {
+    return axios
+      .post("/api/create/campus", campus)
+      .then(() => dispatch(fetchCampuses()));
+  };
+};
+
+export const addStudent = student => {
+  return dispatch => {
+    return axios
+      .post("/api/create/student", student)
+      .then(() => dispatch(fetchStudents()));
+  };
+};
 export default createStore(reducer, applyMiddleware(thunk));
