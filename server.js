@@ -28,11 +28,35 @@ app.get("/api/students", (req, res, next) => {
 });
 
 app.post("/api/create/campus", (req, res, next) => {
-  Campus.create(req.body).then(campus => res.json(campus));
+  Campus.create(req.body)
+    .then(campus => res.json(campus))
+    .catch(next);
 });
 
 app.post("/api/create/student", (req, res, next) => {
-  Student.create(req.body).then(student => res.json(student));
+  Student.create(req.body)
+    .then(student => res.json(student))
+    .catch(next);
+});
+
+app.delete("/api/campus/:id", (req, res, next) => {
+  Campus.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(() => res.sendStatus(204))
+    .catch(next);
+});
+
+app.delete("/api/student/:id", (req, res, next) => {
+  Student.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+    .then(() => res.sendStatus(204))
+    .catch(next);
 });
 
 app.listen(port, () => console.log(`listening on port ${port}`));

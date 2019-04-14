@@ -75,4 +75,21 @@ export const addStudent = student => {
       .then(() => dispatch(fetchStudents()));
   };
 };
+
+export const destroyCampus = id => {
+  return dispatch => {
+    return axios
+      .delete(`/api/campus/${id}`)
+      .then(() => dispatch(fetchCampuses()));
+  };
+};
+
+export const destroyStudent = id => {
+  return dispatch => {
+    return axios
+      .delete(`/api/student/${id}`)
+      .then(() => dispatch(fetchCampuses()));
+  };
+};
+
 export default createStore(reducer, applyMiddleware(thunk));

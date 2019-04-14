@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { destroyCampus } from "./store";
 
-const Campuses = ({ campuses }) => {
+const Campuses = ({ campuses, destroy }) => {
   return (
     <div>
       <Link to="/create/campus" className="float-right btn btn-primary">
@@ -14,6 +15,12 @@ const Campuses = ({ campuses }) => {
             <div>
               <b>{campus.name}</b>
             </div>
+            <button
+              className="float-right btn btn-danger"
+              onClick={() => destroy(campus.id)}
+            >
+              X
+            </button>
             <Link to={`/campus/${campus.id}`}>
               <img src={campus.imageUrl} />
             </Link>
@@ -30,4 +37,13 @@ const mapStateToProps = state => {
   };
 };
 
-export default connect(mapStateToProps)(Campuses);
+const mapDispatchToProps = dispatch => {
+  return {
+    destroy: id => dispatch(destroyCampus(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Campuses);
