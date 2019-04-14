@@ -101,6 +101,7 @@ const syncAndSeed = () => {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
           email: faker.internet.email(),
+          imageUrl: faker.image.people(),
           gpa: (Math.random() * 4).toFixed(2),
           campusId: 1
         }),
@@ -108,6 +109,7 @@ const syncAndSeed = () => {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
           email: faker.internet.email(),
+          imageUrl: faker.image.people(),
           gpa: (Math.random() * 4).toFixed(2),
           campusId: 2
         }),
@@ -115,6 +117,7 @@ const syncAndSeed = () => {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
           email: faker.internet.email(),
+          imageUrl: faker.image.people(),
           gpa: (Math.random() * 4).toFixed(2),
           campusId: 3
         }),
@@ -122,6 +125,7 @@ const syncAndSeed = () => {
           firstName: faker.name.firstName(),
           lastName: faker.name.lastName(),
           email: faker.internet.email(),
+          imageUrl: faker.image.people(),
           gpa: (Math.random() * 4).toFixed(2),
           campusId: 4
         })

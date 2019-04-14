@@ -1,18 +1,26 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Campuses = ({ campuses }) => {
   return (
-    <ul>
-      {campuses.map(campus => (
-        <div key={campus.id}>
-          <div>{campus.name}</div>
-          <div>
-            <img src={campus.imageUrl} />
+    <div>
+      <Link to="/create/campus" className="float-right btn btn-primary">
+        Add Campus
+      </Link>
+      <ul>
+        {campuses.map(campus => (
+          <div key={campus.id}>
+            <div>
+              <b>{campus.name}</b>
+            </div>
+            <Link to={`/campus/${campus.id}`}>
+              <img src={campus.imageUrl} />
+            </Link>
           </div>
-        </div>
-      ))}
-    </ul>
+        ))}
+      </ul>
+    </div>
   );
 };
 

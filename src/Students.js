@@ -1,14 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 const Students = ({ students }) => {
-  console.log(students);
   return (
     <ul>
       {students.map(student => (
-        <div key={student.id}>
+        <Link to={`/student/${student.id}`} key={student.id}>
           {student.firstName} {student.lastName}
-        </div>
+        </Link>
       ))}
     </ul>
   );

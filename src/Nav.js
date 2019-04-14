@@ -20,7 +20,7 @@ const Nav = ({ location }) => {
           className={
             location.pathname === link.path ? "nav-link active" : "nav nav-link"
           }
-          key={link.id}
+          key={link.path}
         >
           {link.title}
         </Link>
