@@ -108,7 +108,7 @@ const Campus = conn.define("campuses", {
             "WY"
           ]
         ],
-        msg: "Please enter a valid state"
+        msg: "Please enter a valid state as a two capital letters."
       }
     }
   },
@@ -187,89 +187,8 @@ const Student = conn.define("students", {
 Student.belongsTo(Campus);
 Campus.hasMany(Student);
 
-const syncAndSeed = () => {
-  return conn.sync({ force: true }).then(() => {
-    return Promise.all([
-      Promise.all([
-        Campus.create({
-          name: "Luna",
-          imageUrl: faker.image.city(),
-          address: `${faker.address.streetAddress()}`,
-          city: `${faker.address.city()}`,
-          state: `${faker.address.stateAbbr()}`,
-          zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
-        }),
-        Campus.create({
-          name: "Terra",
-          imageUrl: faker.image.city(),
-          address: `${faker.address.streetAddress()}`,
-          city: `${faker.address.city()}`,
-          state: `${faker.address.stateAbbr()}`,
-          zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
-        }),
-        Campus.create({
-          name: "Mars",
-          imageUrl: faker.image.city(),
-          address: `${faker.address.streetAddress()}`,
-          city: `${faker.address.city()}`,
-          state: `${faker.address.stateAbbr()}`,
-          zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
-        }),
-        Campus.create({
-          name: "Titan",
-          imageUrl: faker.image.city(),
-          address: `${faker.address.streetAddress()}`,
-          city: `${faker.address.city()}`,
-          state: `${faker.address.stateAbbr()}`,
-          zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
-        })
-      ]),
-      Promise.all([
-        Student.create({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
-          email: faker.internet.email(),
-          imageUrl: faker.image.people(),
-          gpa: (Math.random() * 4).toFixed(2),
-          campusId: 1
-        }),
-        Student.create({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
-          email: faker.internet.email(),
-          imageUrl: faker.image.people(),
-          gpa: (Math.random() * 4).toFixed(2),
-          campusId: 2
-        }),
-        Student.create({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
-          email: faker.internet.email(),
-          imageUrl: faker.image.people(),
-          gpa: (Math.random() * 4).toFixed(2),
-          campusId: 3
-        }),
-        Student.create({
-          firstName: faker.name.firstName(),
-          lastName: faker.name.lastName(),
-          email: faker.internet.email(),
-          imageUrl: faker.image.people(),
-          gpa: (Math.random() * 4).toFixed(2),
-          campusId: 4
-        })
-      ])
-    ]).then(() => {
-      console.log("data seeded!");
-    });
-  });
-};
-
 module.exports = {
   Campus,
   Student,
-  syncAndSeed
+  conn
 };

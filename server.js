@@ -2,11 +2,12 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const bodyParser = require("body-parser");
-const { Campus, Student, syncAndSeed } = require("./db");
+const { Campus, Student } = require("./db");
+const { syncAndSeed } = require("./seed");
 
 const port = process.env.PORT || 3000;
 syncAndSeed();
-
+//middleware
 app.use(bodyParser.json());
 
 app.get("/app.js", (req, res, next) =>
@@ -18,7 +19,7 @@ app.get("/", (req, res, next) =>
 app.get("/style.css", (req, res, next) =>
   res.sendFile(path.join(__dirname, "style.css"))
 );
-
+// API routes
 app.get("/api/campuses", (req, res, next) => {
   Campus.findAll()
     .then(campuses => res.send(campuses))
@@ -62,7 +63,7 @@ app.delete("/api/student/:id", (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next);
 });
-
+// Error handling endware
 app.use((err, req, res, next) => {
   let errors = [err];
   if (err.name === "SequelizeValidationError") {
