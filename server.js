@@ -8,11 +8,15 @@ const port = process.env.PORT || 3000;
 syncAndSeed();
 
 app.use(bodyParser.json());
+
 app.get("/app.js", (req, res, next) =>
   res.sendFile(path.join(__dirname, "dist", "main.js"))
 );
 app.get("/", (req, res, next) =>
   res.sendFile(path.join(__dirname, "index.html"))
+);
+app.get("/style.css", (req, res, next) =>
+  res.sendFile(path.join(__dirname, "style.css"))
 );
 
 app.get("/api/campuses", (req, res, next) => {
@@ -57,6 +61,16 @@ app.delete("/api/student/:id", (req, res, next) => {
   })
     .then(() => res.sendStatus(204))
     .catch(next);
+});
+
+app.use((err, req, res, next) => {
+  let errors = [err];
+  if (err.name === "SequelizeValidationError") {
+    errors = err.errors;
+  } else {
+    errors = [{ message: err.message }];
+  }
+  res.status(err.status || 500).send({ errors });
 });
 
 app.listen(port, () => console.log(`listening on port ${port}`));

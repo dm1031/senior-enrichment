@@ -6,27 +6,42 @@ import { destroyCampus } from "./store";
 const Campuses = ({ campuses, destroy }) => {
   return (
     <div>
-      <Link to="/create/campus" className="float-right btn btn-primary">
-        Add Campus
+      <Link to="/create/campus" className="btn btn-success mt-2">
+        + Campus
       </Link>
-      <ul>
-        {campuses.map(campus => (
-          <div key={campus.id}>
-            <div>
-              <b>{campus.name}</b>
-            </div>
+      <hr />
+      {campuses.map(campus => (
+        <div key={campus.id}>
+          <div className="name">{campus.name}</div>
+          <div>
             <button
-              className="float-right btn btn-danger"
+              type="submit"
+              className="btn btn-danger float-right"
               onClick={() => destroy(campus.id)}
             >
-              X
+              Delete Campus
             </button>
-            <Link to={`/campus/${campus.id}`}>
-              <img src={campus.imageUrl} />
+          </div>
+          <div>
+            <Link
+              to={`/campus/${campus.id}`}
+              className="btn btn-primary float-right"
+            >
+              View Campus
             </Link>
           </div>
-        ))}
-      </ul>
+          <div>
+            <img src={campus.imageUrl} className="campus-image" />
+          </div>
+          <div className="blurb mb-2">{campus.blurb}</div>
+          <div className="location">
+            <i>
+              {campus.city}, {campus.state}
+            </i>
+          </div>
+          <hr />
+        </div>
+      ))}
     </div>
   );
 };

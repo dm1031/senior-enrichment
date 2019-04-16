@@ -9,10 +9,14 @@ class Create extends Component {
     super(props);
     if (props.location.pathname === "/create/campus") {
       this.state = {
-        fields: ["name", "address", "description"],
+        fields: ["name", "address", "city", "state", "zip", "description"],
         name: "",
         address: "",
-        description: ""
+        city: "",
+        state: "",
+        zip: "",
+        description: "",
+        errors: []
       };
     } else {
       this.state = {
@@ -21,7 +25,8 @@ class Create extends Component {
         lastName: "",
         email: "",
         gpa: "",
-        campus: ""
+        campus: "",
+        errors: []
       };
     }
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -33,10 +38,18 @@ class Create extends Component {
         name: this.state.name,
         imageUrl: faker.image.city(),
         address: this.state.address,
+        city: this.state.city,
+        state: this.state.state,
+        zip: this.state.zip,
         description: this.state.description
       };
-      this.props.setCampus(createdCampus);
-      this.props.history.push("/campuses");
+
+      this.props
+        .setCampus(createdCampus)
+        .then(() => {
+          this.props.history.push("/campuses");
+        })
+        .catch(ex => this.setState({ errors: ex.response.data.errors }));
     } else {
       const createdStudent = {
         firstName: this.state.firstName,
@@ -46,15 +59,27 @@ class Create extends Component {
         gpa: this.state.gpa,
         campusId: this.state.campus
       };
-      this.props.setStudent(createdStudent);
-      this.props.history.push("/students");
+
+      this.props
+        .setStudent(createdStudent)
+        .then(() => {
+          this.props.history.push("/students");
+        })
+        .catch(ex => this.setState({ errors: ex.response.data.errors }));
     }
   }
   render() {
-    const { fields } = this.state;
+    const { fields, errors } = this.state;
     const { campuses } = this.props;
     return (
       <div>
+        {errors.length
+          ? errors.map((error, idx) => (
+              <div key={idx} className="alert alert-danger">
+                {error.message}
+              </div>
+            ))
+          : ""}
         <form onSubmit={this.handleSubmit} className="form-group">
           {fields.map(field =>
             field === "campus" ? (

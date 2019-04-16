@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 const Campus = ({ currentCampus, studentsOfCampus }) => {
   return (
-    <ul>
+    <div>
       {currentCampus.map(({ id, name, imageUrl, address, description }) => (
         <div key={id}>
           <div>
@@ -25,14 +25,16 @@ const Campus = ({ currentCampus, studentsOfCampus }) => {
           <b>Students: </b>
           <div>
             {studentsOfCampus.map(student => (
-              <Link to={`/student/${student.id}`} key={student.id}>
-                {student.firstName} {student.lastName}
-              </Link>
+              <div key={student.id}>
+                <Link to={`/student/${student.id}`} key={student.id}>
+                  {student.firstName} {student.lastName}
+                </Link>
+              </div>
             ))}
           </div>
         </div>
       ))}
-    </ul>
+    </div>
   );
 };
 

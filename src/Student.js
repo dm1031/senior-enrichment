@@ -10,7 +10,7 @@ const Student = ({ currentStudent, campuses }) => {
     );
   }
   return (
-    <ul>
+    <ul className="container">
       {currentStudent.map(student => (
         <div key={student.gpa}>
           <div>

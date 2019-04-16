@@ -5,24 +5,30 @@ import { destroyStudent } from "./store";
 
 const Students = ({ students, destroy }) => {
   return (
-    <ul>
-      <Link to="/create/student" className="float-right btn btn-primary">
-        Add Student
+    <div>
+      <Link to="/create/student" className="btn btn-success mt-2">
+        + Student
       </Link>
+      <hr />
       {students.map(student => (
         <div key={student.id}>
+          <div className="name">
+            <Link to={`/student/${student.id}`}>
+              {student.firstName} {student.lastName}
+            </Link>
+          </div>
           <button
+            className="btn btn-danger float-right"
             onClick={() => destroy(student.id)}
-            className="btn btn-danger"
           >
-            X
+            Delete Student
           </button>
-          <Link to={`/student/${student.id}`} key={student.id}>
-            {student.firstName} {student.lastName}
-          </Link>
+          <div className="blurb mb-2">{student.email}</div>
+          <div className="location">GPA: {student.gpa}</div>
+          <hr />
         </div>
       ))}
-    </ul>
+    </div>
   );
 };
 

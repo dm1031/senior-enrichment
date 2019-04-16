@@ -4,8 +4,12 @@ import { Link } from "react-router-dom";
 const Nav = ({ location }) => {
   const links = [
     {
+      pagh: "/",
+      tytle: "Home"
+    },
+    {
       path: "/campuses",
-      title: "Home"
+      title: "Campuses"
     },
     {
       path: "/students",
@@ -13,19 +17,40 @@ const Nav = ({ location }) => {
     }
   ];
   return (
-    <ul className="nav nav-tabs">
-      {links.map(link => (
-        <Link
-          to={link.path}
-          className={
-            location.pathname === link.path ? "nav-link active" : "nav nav-link"
-          }
-          key={link.path}
-        >
-          {link.title}
-        </Link>
-      ))}
-    </ul>
+    <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
+      <ul className="navbar-nav">
+        <li className="nav-item">
+          <Link
+            to="/"
+            className={
+              location.pathname === "/" ? "nav-link active" : "nav-link"
+            }
+          >
+            Home
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/campuses"
+            className={
+              location.pathname === "/campuses" ? "nav-link active" : "nav-link"
+            }
+          >
+            Campuses
+          </Link>
+        </li>
+        <li className="nav-item">
+          <Link
+            to="/students"
+            className={
+              location.pathname === "/students" ? "nav-link active" : "nav-link"
+            }
+          >
+            Students
+          </Link>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

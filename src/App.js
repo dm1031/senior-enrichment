@@ -10,20 +10,33 @@ import Create from "./Create";
 import Nav from "./Nav";
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      isLoading: true
+    };
+  }
   componentDidMount() {
     this.props.fetchData();
+    this.setState({ isLoading: false });
   }
   render() {
+    const { isLoading } = this.state;
+    console.log(this.state);
     return (
       <Router>
-        <div>
-          <Route component={Nav} />
-          <Route component={Campuses} path="/campuses" />
-          <Route component={Students} path="/students" />
-          <Route component={Campus} path="/campus/:id" />
-          <Route component={Student} exact path="/student/:id" />
-          <Route component={Create} path="/create" />
-        </div>
+        {isLoading === true ? (
+          <div>Page Loading!</div>
+        ) : (
+          <div>
+            <Route component={Nav} />
+            <Route component={Campuses} path="/campuses" />
+            <Route component={Students} path="/students" />
+            <Route component={Campus} path="/campus/:id" />
+            <Route component={Student} exact path="/student/:id" />
+            <Route component={Create} path="/create" />
+          </div>
+        )}
       </Router>
     );
   }
