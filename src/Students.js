@@ -6,7 +6,7 @@ import { destroyStudent } from "./store";
 const Students = ({ students, destroy }) => {
   return (
     <div>
-      <Link to="/create/student" className="btn btn-success mt-2">
+      <Link to="/create/student" className="btn btn-success mt-3">
         + Student
       </Link>
       <hr />

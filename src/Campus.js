@@ -6,31 +6,26 @@ const Campus = ({ currentCampus, studentsOfCampus }) => {
   return (
     <div>
       {currentCampus.map(({ id, name, imageUrl, address, description }) => (
-        <div key={id}>
-          <div>
-            <b>Name: </b>
-            {name}
+        <div className="single-campus-container">
+          <div className="name-container">
+            <div className="header">{name}</div>
           </div>
-          <div>
-            <img src={imageUrl} />
-          </div>
-          <div>
-            <b>Address: </b>
-            {address}
-          </div>
-          <div>
-            <b>Description: </b>
-            {description}
-          </div>
-          <b>Students: </b>
-          <div>
-            {studentsOfCampus.map(student => (
-              <div key={student.id}>
-                <Link to={`/student/${student.id}`} key={student.id}>
-                  {student.firstName} {student.lastName}
-                </Link>
+          <div className="info-image-container">
+            <div>
+              <img src={imageUrl} className="single-campus-image" />
+            </div>
+            <div className="info-box-container">
+              <div className="header-container">Current Students</div>
+              <div>
+                {studentsOfCampus.map(student => (
+                  <div>
+                    <Link to={`/student/${id}`}>
+                      {student.firstName} {student.lastName}
+                    </Link>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       ))}
