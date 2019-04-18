@@ -118,11 +118,26 @@ class Create extends Component {
               </div>
             )
           )}
-          <input
-            type="submit"
-            value="Create"
-            className="mt-3 btn btn-primary"
-          />
+          <span>
+            <input
+              type="submit"
+              value="Create"
+              className="mt-3 btn btn-primary"
+            />
+          </span>
+          <span>
+            <button
+              type="submit"
+              className="mt-3 mx-3 btn btn-primary"
+              onClick={() =>
+                this.props.location.pathname === "/create/campus"
+                  ? this.props.history.push("/campuses")
+                  : this.props.history.push("/students")
+              }
+            >
+              Cancel
+            </button>
+          </span>
         </form>
       </div>
     );

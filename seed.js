@@ -12,7 +12,8 @@ const syncAndSeed = () => {
           city: `${faker.address.city()}`,
           state: `${faker.address.stateAbbr()}`,
           zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
+          description: faker.lorem.paragraphs(),
+          blurb: faker.lorem.words()
         }),
         Campus.create({
           name: "Terra Middle",
@@ -21,7 +22,8 @@ const syncAndSeed = () => {
           city: `${faker.address.city()}`,
           state: `${faker.address.stateAbbr()}`,
           zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
+          description: faker.lorem.paragraphs(),
+          blurb: faker.lorem.words()
         }),
         Campus.create({
           name: "Mars Middle",
@@ -30,7 +32,8 @@ const syncAndSeed = () => {
           city: `${faker.address.city()}`,
           state: `${faker.address.stateAbbr()}`,
           zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
+          description: faker.lorem.paragraphs(),
+          blurb: faker.lorem.words()
         }),
         Campus.create({
           name: "Titan Elementary",
@@ -39,7 +42,8 @@ const syncAndSeed = () => {
           city: `${faker.address.city()}`,
           state: `${faker.address.stateAbbr()}`,
           zip: `${faker.address.zipCode()}`,
-          description: faker.lorem.sentence()
+          description: faker.lorem.paragraphs(),
+          blurb: faker.lorem.words()
         })
       ]),
       Promise.all([

@@ -29,7 +29,7 @@
 }
 
 .campuses-container > div {
-  margin: 20px;
+  margin: 0px;
   padding: 10px;
   text-align: left;
 }
@@ -40,6 +40,7 @@
   justify-content: space-between;
   align-items: center;
   align-content: stretch;
+  text-align: left;
 }
 
 .button-container {
@@ -58,41 +59,35 @@
 }
 
 .single-campus-image {
-  width: 800px;
-  height: 400px;
+  width: 400px;
   border-style: solid;
   border-width: 2px;
-  border-radius: 15px;
-  border-color: lightsalmon;
+  border-color: black;
 }
 
 .name-container {
   display: flex;
   flex-direction: row;
+  margin: 40px 20px 0px 0px;
+  font-size: 40px;
 }
 
 .student-info-container {
   display: flex;
   flex-direction: column;
-  align-self: auto;
   background-color: white;
 }
 
 .info-image-container {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
 }
 
 .info-box-container {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: left;
-  border-style: solid;
-  border-width: 4px;
-  border-radius: 15px;
-  border-color: darkturquoise;
+  width: auto;
+  margin: 40px 20px 0px 30px;
 }
 
 .header-container {
@@ -105,6 +100,32 @@
 .header {
   font-size: 60px;
   text-align: left;
+}
+
+.single-student-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.single-student-image-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-student-image {
+  border: solid;
+  border-color: black;
+  border-width: 2px;
+  width: 40%;
+}
+
+.student-info-box {
+  border: solid;
+  border-color: black;
+  border-width: 2px;
+  height: 240px;
+  width: 220px;
+  background-color: plum;
 }
 
 hr {

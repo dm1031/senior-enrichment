@@ -22,7 +22,6 @@ class App extends Component {
   }
   render() {
     const { isLoading } = this.state;
-    console.log(this.state);
     return (
       <Router>
         {isLoading === true ? (

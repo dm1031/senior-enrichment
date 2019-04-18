@@ -63,6 +63,20 @@ app.delete("/api/student/:id", (req, res, next) => {
     .then(() => res.sendStatus(204))
     .catch(next);
 });
+
+app.put("/api/campus/:id", (req, res, next) => {
+  Campus.findByPk(req.params.id)
+    .then(campus => campus.update(req.body))
+    .then(campus => res.send(campus))
+    .catch(next);
+});
+
+app.put("/api/student/:id", (req, res, next) => {
+  Student.findByPk(req.params.id)
+    .then(student => student.update(req.body))
+    .then(student => res.send(student))
+    .catch(next);
+});
 // Error handling endware
 app.use((err, req, res, next) => {
   let errors = [err];

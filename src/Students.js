@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { destroyStudent } from "./store";
+import ToggleEditStudent from "./ToggleEditStudent";
 
 const Students = ({ students, destroy }) => {
   return (
@@ -17,6 +18,10 @@ const Students = ({ students, destroy }) => {
               {student.firstName} {student.lastName}
             </Link>
           </div>
+          <ToggleEditStudent
+            edit={["firstName", "lastName"]}
+            dataId={student.id}
+          />
           <button
             className="btn btn-danger float-right"
             onClick={() => destroy(student.id)}
@@ -24,6 +29,7 @@ const Students = ({ students, destroy }) => {
             Delete Student
           </button>
           <div className="blurb mb-2">{student.email}</div>
+          <ToggleEditStudent edit={["email"]} dataId={student.id} />
           <div className="location">GPA: {student.gpa}</div>
           <hr />
         </div>

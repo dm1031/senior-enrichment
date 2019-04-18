@@ -1,32 +1,55 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
+import { destroyStudent } from "./store";
+import ToggleEditCampus from "./ToggleEditCampus";
 
-const Campus = ({ currentCampus, studentsOfCampus }) => {
+const Campus = ({ currentCampus, studentsOfCampus, destroy }) => {
   return (
     <div>
-      {currentCampus.map(({ id, name, imageUrl, address, description }) => (
-        <div className="single-campus-container">
-          <div className="name-container">
-            <div className="header">{name}</div>
-          </div>
+      {currentCampus.map(campus => (
+        <div key={campus.id} className="single-campus-container">
+          <div className="name-container mt-3" />
           <div className="info-image-container">
             <div>
-              <img src={imageUrl} className="single-campus-image" />
+              <img src={campus.imageUrl} className="single-campus-image" />
             </div>
             <div className="info-box-container">
-              <div className="header-container">Current Students</div>
-              <div>
-                {studentsOfCampus.map(student => (
-                  <div>
-                    <Link to={`/student/${id}`}>
-                      {student.firstName} {student.lastName}
-                    </Link>
-                  </div>
-                ))}
+              <div className="name">About {campus.name}</div>
+              <ToggleEditCampus edit={["name"]} dataId={campus.id} />
+              <div className="blurb">
+                <b>Located at </b>
+                {campus.address} {campus.city}, {campus.state} {campus.zip}
               </div>
+              <ToggleEditCampus
+                edit={["address", "city", "state", "zip"]}
+                dataId={campus.id}
+              />
+              <div className="location">{campus.description}</div>
+              <ToggleEditCampus edit={["description"]} dataId={campus.id} />
             </div>
           </div>
+          <div className="mt-3" />
+          <div className="name">Students</div>
+          <hr />
+          {studentsOfCampus.map(student => (
+            <div key={student.id}>
+              <div className="name">
+                <Link to={`/student/${student.id}`}>
+                  {student.firstName} {student.lastName}
+                </Link>
+              </div>
+              <button
+                className="btn btn-danger float-right"
+                onClick={() => destroy(student.id)}
+              >
+                Delete Student
+              </button>
+              <div className="blurb mb-2">{student.email}</div>
+              <div className="location">GPA: {student.gpa}</div>
+              <hr />
+            </div>
+          ))}
         </div>
       ))}
     </div>
@@ -46,4 +69,13 @@ const mapStateToProps = (state, { location }) => {
   };
 };
 
-export default connect(mapStateToProps)(Campus);
+const mapDispatchToProps = dispatch => {
+  return {
+    destroy: id => dispatch(destroyStudent(id))
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Campus);

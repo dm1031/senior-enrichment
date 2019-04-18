@@ -10,31 +10,24 @@ const Student = ({ currentStudent, campuses }) => {
     );
   }
   return (
-    <ul className="container">
+    <div>
       {currentStudent.map(student => (
-        <div key={student.gpa}>
-          <div>
-            <b>Name: </b>
-            {student.firstName} {student.lastName}
+        <div className="single-student-container">
+          <div className="single-student-image-container mt-1">
+            <div className="name">
+              {student.firstName} {student.lastName}
+            </div>
+            <div>
+              <img
+                src={student.imageUrl}
+                className="single-student-image mt-1"
+              />
+            </div>
+            <div className="student-info-box mt-2" />
           </div>
-          <div>
-            <img src={student.imageUrl} />
-          </div>
-          <div>
-            <b>Email: </b>
-            {student.email}
-          </div>
-          <div>
-            <b>GPA: </b>
-            {student.gpa}
-          </div>
-          <b>Attending: </b>
-          <Link to={`/campus/${student.campusId}`} key={student.id}>
-            {campusOfStudent[0].name}
-          </Link>
         </div>
       ))}
-    </ul>
+    </div>
   );
 };
 
