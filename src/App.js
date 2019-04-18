@@ -2,12 +2,12 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { HashRouter as Router, Route } from "react-router-dom";
 import { fetchCampuses, fetchStudents } from "./store";
-import Campuses from "./Campuses";
-import Campus from "./Campus";
-import Students from "./Students";
-import Student from "./Student";
-import Create from "./Create";
-import Nav from "./Nav";
+import Campuses from "./Components/Campus/Campuses";
+import Campus from "./Components/Campus/Campus";
+import Students from "./Components/Student/Students";
+import Student from "./Components/Student/Student";
+import Create from "./Forms/Create/Create";
+import Nav from "./Components/Utility/Nav";
 
 class App extends Component {
   constructor() {

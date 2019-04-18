@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import EditStudentForm from "./EditStudentForm";
+import EditDataForm from "./EditDataForm";
 
-class ToggleEditStudent extends Component {
+class ToggleEditForm extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -10,21 +10,21 @@ class ToggleEditStudent extends Component {
   }
   render() {
     const { isHidden } = this.state;
-    const { edit, dataId } = this.props;
+    const { edit, dataId, location } = this.props;
     return (
-      <div>
+      <span>
         <i
           className="far fa-edit"
           onClick={() => this.setState({ isHidden: !isHidden })}
         />
         {isHidden === false ? (
-          <EditStudentForm edit={edit} dataId={dataId} />
+          <EditDataForm edit={edit} dataId={dataId} location={location} />
         ) : (
           ""
         )}
-      </div>
+      </span>
     );
   }
 }
 
-export default ToggleEditStudent;
+export default ToggleEditForm;

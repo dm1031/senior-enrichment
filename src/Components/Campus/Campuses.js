@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { destroyCampus } from "./store";
+import { destroyCampus } from "../../store";
 
 const Campuses = ({ campuses, destroy }) => {
   return (

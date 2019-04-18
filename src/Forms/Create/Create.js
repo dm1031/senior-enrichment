@@ -1,7 +1,7 @@
 /* eslint-disable no-confusing-arrow */
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { addCampus, addStudent } from "./store";
+import { addCampus, addStudent } from "../../store";
 import faker from "faker";
 
 class Create extends Component {

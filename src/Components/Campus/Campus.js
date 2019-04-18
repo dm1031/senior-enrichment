@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { destroyStudent } from "./store";
-import ToggleEditCampus from "./ToggleEditCampus";
+import { destroyStudent } from "../../store";
+import ToggleEditForm from "../../Forms/Edit/ToggleEditForm";
 
-const Campus = ({ currentCampus, studentsOfCampus, destroy }) => {
+const Campus = ({ currentCampus, studentsOfCampus, destroy, location }) => {
   return (
     <div>
       {currentCampus.map(campus => (
@@ -16,17 +16,26 @@ const Campus = ({ currentCampus, studentsOfCampus, destroy }) => {
             </div>
             <div className="info-box-container">
               <div className="name">About {campus.name}</div>
-              <ToggleEditCampus edit={["name"]} dataId={campus.id} />
+              <ToggleEditForm
+                edit={["name"]}
+                dataId={campus.id}
+                location={location}
+              />
               <div className="blurb">
                 <b>Located at </b>
                 {campus.address} {campus.city}, {campus.state} {campus.zip}
               </div>
-              <ToggleEditCampus
+              <ToggleEditForm
                 edit={["address", "city", "state", "zip"]}
                 dataId={campus.id}
+                location={location}
               />
               <div className="location">{campus.description}</div>
-              <ToggleEditCampus edit={["description"]} dataId={campus.id} />
+              <ToggleEditForm
+                edit={["description"]}
+                dataId={campus.id}
+                location={location}
+              />
             </div>
           </div>
           <div className="mt-3" />
