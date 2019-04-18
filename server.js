@@ -21,13 +21,17 @@ app.get("/style.css", (req, res, next) =>
 );
 // API routes
 app.get("/api/campuses", (req, res, next) => {
-  Campus.findAll()
+  Campus.findAll({
+    order: [["id", "ASC"]]
+  })
     .then(campuses => res.send(campuses))
     .catch(next);
 });
 
 app.get("/api/students", (req, res, next) => {
-  Student.findAll()
+  Student.findAll({
+    order: [["id", "ASC"]]
+  })
     .then(students => res.send(students))
     .catch(next);
 });
