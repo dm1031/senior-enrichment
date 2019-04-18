@@ -64,9 +64,9 @@ const Student = ({ currentStudent, campuses, destroy, handleDelete }) => {
   );
 };
 
-const mapStateToProps = (state, { location, history }) => {
+const mapStateToProps = (state, { history, match }) => {
   const currentStudent = state.students.filter(
-    student => student.id === location.pathname.slice(-1) * 1
+    student => student.id === match.params.id * 1
   );
 
   const handleDelete = (fn, id) => {

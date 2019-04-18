@@ -32,7 +32,7 @@ class App extends Component {
             <Route component={Campuses} path="/campuses" />
             <Route component={Students} path="/students" />
             <Route component={Campus} path="/campus/:id" />
-            <Route component={Student} exact path="/student/:id" />
+            <Route component={Student} path="/student/:id" />
             <Route component={Create} path="/create" />
           </div>
         )}
