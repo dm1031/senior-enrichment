@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { destroyStudent } from "../../store";
 import ToggleEditForm from "../../Forms/Edit/ToggleEditForm";

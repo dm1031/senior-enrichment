@@ -2,20 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Nav = ({ location }) => {
-  const links = [
-    {
-      pagh: "/",
-      tytle: "Home"
-    },
-    {
-      path: "/campuses",
-      title: "Campuses"
-    },
-    {
-      path: "/students",
-      title: "Students"
-    }
-  ];
   return (
     <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
       <ul className="navbar-nav">
